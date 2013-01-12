@@ -1,7 +1,6 @@
 <div class="hero-unit">
     <h1>Tweet Wall</h1>
-
-    <p>With AnjularJS</p>
+    <p>With AngularJS</p>
 </div>
 
 <div>
@@ -10,12 +9,12 @@
                ng-model="search" autofocus="">
         <a class="btn" ng-click="startWall();">Search</a>
         <div>
+            <a ng-click="stopRefresh()" ng-hide="!started">Stop refresh</a>
+            <a ng-click="startRefresh()" ng-hide="started">Activate refresh</a>
+            ({{counter}})
+        </div>
+        <div>
             <b>Searching for: </b> {{searchTerm}}
-            <div>
-                <a ng-click="stopRefresh()" ng-hide="!started">Stop refresh</a>
-                <a ng-click="startRefresh()" ng-hide="started">Auto refresh</a>
-                ({{counter}})
-            </div>{{lastTweetId}}
         </div>
     </div>
 </div>
@@ -28,7 +27,6 @@
         <div class="span6">
             <div>
                 <b ng-bind="tweet.from_user_name"></b>
-                <!--<a ng-href="https://twitter.com/{{tweet.from_user}}" ng-bind="tweet.from_user | twitterfy" target="_blank"></a>-->
                 {{tweet.id}}
             </div>
             <div ng-bind="tweet.text"></div>

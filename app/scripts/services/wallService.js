@@ -7,7 +7,7 @@ twitterClientApp.factory('wallService', function (twitterService, $rootScope, $t
 
     self.init = function (_scope) {
         scope = _scope;
-        timer = $timeout(onTimeout, 1000);
+        timer = $timeout(onTimeout, scope.frequency);
     }
 
     self.refresh = function () {
@@ -41,7 +41,7 @@ twitterClientApp.factory('wallService', function (twitterService, $rootScope, $t
     // Auto refresh
 
     self.startRefresh = function () {
-        timer = $timeout(onTimeout, 1000);
+        timer = $timeout(onTimeout, scope.frequency);
         scope.started = !scope.started;
     };
 
@@ -53,10 +53,10 @@ twitterClientApp.factory('wallService', function (twitterService, $rootScope, $t
     function onTimeout() {
         scope.counter++;
         self.refresh();
-        timer = $timeout(onTimeout, 1000);
+        timer = $timeout(onTimeout, scope.frequency);
     }
 
-    // Public API here
+    // Public APIs
     return {
         init: self.init,
         refresh: self.refresh,

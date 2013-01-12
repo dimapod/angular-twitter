@@ -8,6 +8,7 @@ twitterClientApp.controller('TwitterCtrl', function ($scope, twitterService, $ti
     $scope.lastTweetId = undefined;
     $scope.tweets_length = 15;
     $scope.counter = 0;
+    $scope.frequency = 1000;
 
     wallService.init($scope);
     wallService.refresh();
