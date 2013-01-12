@@ -1,13 +1,13 @@
 'use strict';
 
 var twitterClientApp = angular.module('twitterClientApp', ['ngResource'])
-  .config(['$routeProvider', function($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  }]);
+    .config(['$routeProvider', function ($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'views/wall.html',
+                controller: 'TwitterCtrl'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
+    }]);

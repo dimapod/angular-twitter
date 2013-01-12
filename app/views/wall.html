@@ -1,0 +1,36 @@
+<div class="hero-unit">
+    <h1>Tweet Wall</h1>
+
+    <p>XKE AnjularJS</p>
+</div>
+
+<div>
+    <div class="span4 well">
+        <input type="text" placeholder="tweet search" class="input-medium search-query ng-valid ng-dirty" ng-model="search" autofocus="">
+        <a class="btn" ng-click="startWall();">Start</a>
+    </div>
+
+    <div class="span6 well">
+        <b>Tweets: </b> {{searchTerm}}
+        <div>{{lastTweetId}}</div>
+        <a class="btn" ng-click="refresh();">Refresh</a>
+        <a class="btn" ng-click="add();">Add</a>
+        Started : {{started}} -> {{counter}}
+    </div>
+</div>
+
+<ul>
+<li class="row" ng-repeat="tweet in tweets">
+    <div class="span1 thumbnail">
+        <img ng-src="{{tweet.profile_image_url}}"/>
+    </div>
+    <div class="span6">
+        <div>
+            <b ng-bind="tweet.from_user_name"></b>
+            <!--<a ng-href="https://twitter.com/{{tweet.from_user}}" ng-bind="tweet.from_user | twitterfy" target="_blank"></a>-->
+            {{tweet.id}}
+        </div>
+        <div ng-bind="tweet.text"></div>
+    </div>
+</li>
+</ul>
