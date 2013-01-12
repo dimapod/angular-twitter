@@ -9,25 +9,15 @@ twitterClientApp.controller('TwitterCtrl', function ($scope, twitterService, $ti
     $scope.tweets_length = 15;
     $scope.counter = 0;
 
-
-
     wallService.init($scope);
     wallService.refresh();
 
-
-    // Timer --------------------------------------------------------------
-
-    var timer;
-    timer = $timeout(onTimeout, 1000);
-
     $scope.startRefresh = function () {
-        timer = $timeout(onTimeout, 1000);
-        $scope.started = !$scope.started;
+        wallService.startRefresh();
     };
 
     $scope.stopRefresh = function () {
-        $timeout.cancel(timer);
-        $scope.started = !$scope.started;
+        wallService.stopRefresh();
     };
 
     $scope.startWall = function () {
@@ -35,12 +25,5 @@ twitterClientApp.controller('TwitterCtrl', function ($scope, twitterService, $ti
         $scope.searchTerm = $scope.search;
         wallService.refresh();
     };
-
-    $scope.counter = 0;
-    function onTimeout() {
-        $scope.counter++;
-        wallService.refresh();
-        timer = $timeout(onTimeout, 1000);
-    }
 
 });

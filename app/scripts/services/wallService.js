@@ -3,9 +3,11 @@
 twitterClientApp.factory('wallService', function (twitterService, $rootScope, $timeout) {
     var self = this;
     var scope = undefined;
+    var timer;
 
     self.init = function (_scope) {
         scope = _scope;
+        timer = $timeout(onTimeout, 1000);
     }
 
     self.refresh = function () {
@@ -37,8 +39,6 @@ twitterClientApp.factory('wallService', function (twitterService, $rootScope, $t
     };
 
     // Auto refresh
-    var timer;
-    timer = $timeout(onTimeout, 1000);
 
     self.startRefresh = function () {
         timer = $timeout(onTimeout, 1000);
