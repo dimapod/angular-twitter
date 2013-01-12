@@ -7,7 +7,7 @@ twitterClientApp.factory('wallService', function (twitterService, $rootScope, $t
 
     self.init = function (_scope) {
         scope = _scope;
-        timer = $timeout(onTimeout, scope.frequency);
+        timer = $timeout(onTimeout, scope.config.frequency);
     }
 
     self.refresh = function () {
@@ -16,7 +16,8 @@ twitterClientApp.factory('wallService', function (twitterService, $rootScope, $t
             return;
         }
 
-        twitterService.query({q: scope.searchTerm, since_id: scope.lastTweetId},
+        var params = {q: scope.searchTerm, since_id: scope.lastTweetId};
+        twitterService.query(params,
             function (tweets) {
                 if (tweets.results && tweets.results.length
                     && tweets.results[0].id != scope.lastTweetId) {
@@ -35,13 +36,13 @@ twitterClientApp.factory('wallService', function (twitterService, $rootScope, $t
             scope.tweets.unshift(newTweet);
         });
 
-        scope.tweets.splice(scope.tweets_length);
+        scope.tweets.splice(scope.config.tweets_length);
     };
 
     // Auto refresh
 
     self.startRefresh = function () {
-        timer = $timeout(onTimeout, scope.frequency);
+        timer = $timeout(onTimeout, scope.config.frequency);
         scope.started = !scope.started;
     };
 
@@ -53,7 +54,7 @@ twitterClientApp.factory('wallService', function (twitterService, $rootScope, $t
     function onTimeout() {
         scope.counter++;
         self.refresh();
-        timer = $timeout(onTimeout, scope.frequency);
+        timer = $timeout(onTimeout, scope.config.frequency);
     }
 
     // Public APIs
