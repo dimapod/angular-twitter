@@ -22,6 +22,7 @@ twitterClientApp.controller('TwitterCtrl', function ($scope, twitterService, $ti
 
     $scope.startWall = function () {
         $scope.lastTweetId = undefined;
+        $scope.tweets.splice(0);
         $scope.searchTerm = $scope.search;
         wallService.refresh();
     };

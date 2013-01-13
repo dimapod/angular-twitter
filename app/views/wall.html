@@ -18,8 +18,13 @@
     </div>
 </div>
 
+<div class="well">
+    <input type="text" placeholder="Filter tweets" class="input-large search-query ng-valid ng-dirty"
+           ng-model="query" autofocus="">
+</div>
+
 <ul>
-    <li class="row" ng-repeat="tweet in tweets">
+    <li class="row" ng-repeat="tweet in tweets | filter:query">
         <div class="span1 thumbnail">
             <img ng-src="{{tweet.profile_image_url}}"/>
         </div>
