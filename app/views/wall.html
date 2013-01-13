@@ -23,8 +23,8 @@
            ng-model="query" autofocus="">
 </div>
 
-<ul>
-    <li class="row" ng-repeat="tweet in tweets | filter:query">
+<ul class="unstyled">
+    <li class="row" style="padding-top: 10px" ng-repeat="tweet in tweets | filter:query">
         <div class="span1 thumbnail">
             <img ng-src="{{tweet.profile_image_url}}"/>
         </div>
