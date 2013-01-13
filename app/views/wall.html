@@ -9,9 +9,8 @@
                ng-model="search" autofocus="">
         <a class="btn" ng-click="startWall();">Search</a>
         <div>
-            <a ng-click="stopRefresh()" ng-hide="!started">Stop refresh</a>
+            <a ng-click="stopRefresh()" ng-hide="!started">Stop refresh{{counter | refreshing}}</a>
             <a ng-click="startRefresh()" ng-hide="started">Activate refresh</a>
-            ({{counter}})
         </div>
         <div>
             <b>Searching for: </b> {{searchTerm}}
