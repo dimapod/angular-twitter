@@ -24,7 +24,8 @@
 </div>
 
 <ul class="unstyled">
-    <li class="row" style="padding-top: 10px" ng-repeat="tweet in tweets | filter:query">
+    <div class="tweet_anim animate" ng-repeat="tweet in tweets | filter:query">
+    <li class="row">
         <div class="span1 thumbnail">
             <img ng-src="{{tweet.profile_image_url}}"/>
         </div>
@@ -36,4 +37,5 @@
             <div ng-bind="tweet.text"></div>
         </div>
     </li>
+    </div>
 </ul>

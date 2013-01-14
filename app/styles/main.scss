@@ -1,1 +1,18 @@
 @import "compass_twitter_bootstrap";
+
+.animate {
+  transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
+  -webkit-transition: all ease 0.5s;
+  -o-transition: all ease 0.5s;
+  overflow: hidden;
+  max-height: 0;
+  margin: 0 4px;
+  padding: 0px 4px;
+  &.show {
+    padding-left: 4px;
+    max-height: 100px;
+    margin: 4px;
+    padding: 0px 4px;
+  }
+}
